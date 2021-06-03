@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content_type" content="text/html">
+    <title>過去ログ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+</head>
+
+<body class="conteiner">
+    <header>
+        <h1 class="display-4">過去ログ</h1>
+    </header>
+    <div role="main">
+    <table class="table">
+        <% for(const i in data){ %>
+        <%- include('data_item', {val:data[i]}) %>
+        <% } %>
+    </table>
+    </div>
+    <a href="/">メッセージボードへ戻る</a>
+</body>
+
+</html>

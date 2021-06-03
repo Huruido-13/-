@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content_type" content="text/html">
+    <title>ミニメッセージボード</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+    <script>
+        function init(){
+            const id = localStorage.getItem('id');
+
+            /*現在開いているページはlocation.hrefに設定されている
+                この値を書き換えると表示するページを変えられる*/
+            if(id == null){
+
+                //idが登録されていないのでログインページに飛ばす
+                location.href = './login';
+            }
+            document.querySelector('#id').textContent = 'ID:' + id;
+            document.querySelector('#id_input').value = id;
+        }
+    </script>
+</head>
+
+<body class="conteiner" onload="init();">
+    <header>
+        <h1 class="display-4">メッセージボード</h1>
+    </header>
+    <div role="main">
+        <p>※The Maximum number of message is 10.</p>
+        <form method="post" action="/">
+        <p id="id"></p>
+        <input type="hidden" id="id_input" name="id" value="">
+        <div class="form-group">
+            <label for="msg">Message</label>
+            <input type="text" name="msg" id="msg"
+            class="form-control">
+        </div>
+        <input type="submit" value="Submit"
+        class="btn btn-primary">
+        </form>
+
+    <table class="table">
+        <% for(const i in data){ %>
+        <%- include('data_item', {val:data[i]}) %>
+        <% } %>
+    </table>
+    </div>
+    <a href="/kakolog">過去ログへ</a>
+</body>
+
+</html>
